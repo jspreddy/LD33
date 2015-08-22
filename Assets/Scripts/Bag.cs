@@ -12,7 +12,9 @@ public class Bag : PickupObject {
 		} else {
 			if(!player.active) {
 				player.active = true;
-				Cursor.visible = true;
+
+				Vector3 current_mouse_pos = transform.position;
+				player.transform.position = current_mouse_pos;
 			}
 		}
 	}
