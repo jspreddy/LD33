@@ -17,7 +17,7 @@ public class Chest : Object {
 		if (!chest_opened) {
 			chest_opened = true;
 
-			generate_coins(3);
+			generate_coins(12);
 		}
 	}
 
