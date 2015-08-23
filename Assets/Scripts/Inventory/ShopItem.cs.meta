@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 75afe33f63e754948b0decd305e36c2f
+timeCreated: 1440295324
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - knifeSprite: {fileID: 21300000, guid: c909d9f4f9e334b2bb8aba621e5d91ff, type: 3}
+  - bagSprite: {fileID: 21300000, guid: 5d0b19e901e49480883de0f3281f8a53, type: 3}
+  - chocolateSprite: {fileID: 21300000, guid: 5fb31add3de6241a1811736716525e7f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
