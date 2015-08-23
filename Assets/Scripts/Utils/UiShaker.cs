@@ -20,7 +20,7 @@ public class UiShaker : MonoBehaviour {
 	void Update () {
 		if(bShake){
 			float ping = Mathf.PingPong (Time.time * shakienessMultiplier, amount);
-			Debug.Log (ping);
+//			Debug.Log (ping);
 			this.transform.localPosition = new Vector3(this.transform.localPosition.x - (amount/2) + ping, this.transform.localPosition.y, this.transform.localPosition.z);
 			updateTime -= Time.deltaTime;
 			if(updateTime < 0){

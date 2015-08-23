@@ -35,10 +35,12 @@ public class ShopManager : MonoBehaviour {
 			}
 		}
 		buyItems.Add (new BuyItem (type, 1));
+		renderItemList ();
 	}
 
 	public void clearBuyItems(){
 		buyItems.Clear ();
+		renderItemList ();
 		Debug.Log("Clear Buy List.");
 	}
 
@@ -58,15 +60,18 @@ public class ShopManager : MonoBehaviour {
 			setGoldUiDisplay(gameManager.spendGold(cost));
 			inventoryManager.addItems(buyItems);
 			clearBuyItems();
+			renderItemList ();
 		}
 		else{
 			// TODO: create alert message system.
-			// TODO: shake main gold display.
 			this.topBarTransform.GetComponent<UiShaker>().shake();
 			Debug.Log ("Not Enough Gold.");
 		}
 	}
 
+	private void renderItemList(){
+		// TODO: render the ui list.
+	}
 
 	private void setGoldUiDisplay(int gold){
 		topBarGoldTextTransform.GetComponent<Text> ().text = gold.ToString("C");
