@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class Bag : PickupObject {
+	public Player player_script;
 	void Start () {
-
+		player_script = player.GetComponent<Player>();
 	}
 
 	void Update () {
@@ -13,9 +14,7 @@ public class Bag : PickupObject {
 		if (in_hand) {
 			follow_mouse ();
 		} else {
-			if(!player.active) {
-				player.active = true;
-
+			if(!player.activeSelf) {
 				Vector3 current_mouse_pos = transform.position;
 				player.transform.position = current_mouse_pos;
 			}
@@ -25,23 +24,27 @@ public class Bag : PickupObject {
 	void OnMouseDown() {
 		// Pickup bag
 		in_hand = true;
+		player_script.item_in_hand = true;
 	}
 
 	void OnMouseUp() {
 		// Drop bag
 		in_hand = false;
+		player_script.item_in_hand = false;
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Coin") {
 			// Update play stats
 			Stats.coins_collected++;
+			Stats.coins_left--;
 
 			// Remove coin from screen
 			Destroy (col.gameObject);
 		} else {
 			// Drop bag
 			in_hand = false;
+			player_script.item_in_hand = false;
 		}
 	}
 }

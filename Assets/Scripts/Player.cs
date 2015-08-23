@@ -15,6 +15,11 @@ public class Player : MonoBehaviour {
 
 
 	void Update () {
+		// Check end of game
+		if (Stats.coins_left == 0) {
+			Application.LoadLevel(0);
+		}
+
 		follow_mouse();
 	}
 

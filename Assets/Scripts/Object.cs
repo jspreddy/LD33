@@ -19,8 +19,6 @@ public class Object : MonoBehaviour {
 	}
 
 	public void follow_mouse() {
-		player.active = false;
-
 		mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
 	}

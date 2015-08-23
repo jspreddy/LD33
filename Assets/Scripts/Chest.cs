@@ -4,11 +4,15 @@ using System.Collections;
 public class Chest : Object {
 	private bool chest_opened;
 	private float speed = 6f;
+	private int total_coins = 15;
 
 	public Rigidbody2D coin;
 
 	void Start () {
 		chest_opened = false;
+
+		// Set total coins
+		Stats.set_coins_left (total_coins);
 	}
 
 	void Update () {
@@ -19,7 +23,7 @@ public class Chest : Object {
 		if (!chest_opened) {
 			chest_opened = true;
 
-			generate_coins(12);
+			generate_coins(total_coins);
 		}
 	}
 
