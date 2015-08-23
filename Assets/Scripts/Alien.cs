@@ -4,33 +4,55 @@ using System.Collections;
 public class Alien : MonoBehaviour {
 
 	public float speed;
+	public Rigidbody2D rb;
 	public float jumpHeight;
-	public float jumpSpeed;
 	
 	private Vector3 mousePosition;
 	private Vector3 moveDirection;
+	private float rbVelocity;
+	private bool isJumping;
 
 	void Start () {
+		rb = gameObject.GetComponent<Rigidbody2D>();
+		isJumping = false;
 	}
 	
-	void Update () {
-
-		CharacterController controller = GetComponent<CharacterController>();
-
+	void FixedUpdate () {
+		
 		float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
 		float mouseY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-
+		
 		if (transform.position.x < (mouseX + .5)) 
 		{
-			moveDirection = new Vector3(1,0,0);
-			controller.SimpleMove(moveDirection * speed);
-
+			transform.position += transform.right * speed * Time.deltaTime;
+			
 		}
 		else if(transform.position.x > (mouseX - .5))
 		{
-			moveDirection = new Vector3(-1,0,0);
-			controller.SimpleMove(moveDirection * speed);
+			transform.position -= transform.right * speed * Time.deltaTime;
+		}
+	}
+
+	void Jump() {
+
+		rbVelocity = rb.velocity.y;
+
+		float mouseY = Input.mousePosition.y;
+		
+		Debug.Log (mouseY);
+		
+		if (rbVelocity == 0 ) {
+			
+			rb.AddForce(Vector2.up * ((mouseY * 11) / 5));
 		}
 
+	}
+	
+	void OnCollisionStay2D(Collision2D coll) {
+		
+		if (Input.GetKey(KeyCode.W)) {
+
+			Jump ();
+		}
 	}
 }
