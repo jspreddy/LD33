@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	public float moveSpeed = 10f;
 	public bool item_in_hand = false;
 
+	public GameObject item_held;
+
 	void Start () {
 		Cursor.visible = false;
 
