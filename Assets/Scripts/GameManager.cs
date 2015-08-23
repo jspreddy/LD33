@@ -4,9 +4,16 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 
-	int kills = 0;
-	int gold = 100;
-	GameObject shop;
+	public GameObject sceneCamera;
+	public GameObject inventory;
+	public bool testShop = false;
+
+	private int kills = 0;
+	private int gold = 100;
+	private GameObject shop;
+	private float timeTillShopShow = 0;
+
+
 	public void addGold(int g){
 		this.gold += g;
 	}
@@ -20,10 +27,6 @@ public class GameManager : MonoBehaviour {
 		this.kills++;
 	}
 
-
-	float time = 0;
-	bool start = true;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -31,21 +34,32 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(start){
-			time += Time.deltaTime;
-			if(time > 4.0f){
-				start = false;
-				shop = Instantiate(Resources.Load ("Prefabs/Shop/Shop", typeof(GameObject))) as GameObject;
+		if(testShop){
+			checkAndShowShopIfApplicable();
+		}
+	}
 
-			}
+	private void checkAndShowShopIfApplicable(){
+		timeTillShopShow += Time.deltaTime;
+		if(timeTillShopShow > 4.0f){
+			testShop = false;
+			shop = Instantiate(Resources.Load ("Prefabs/Shop/Shop", typeof(GameObject))) as GameObject;
+			sceneCamera.SetActive(false);
+			setInventoryViewOnly(true);
 		}
 	}
 
 	public void refreshShopTimer(){
-		this.time = 0.0f;
-		this.start = true;
+		this.timeTillShopShow = 0.0f;
+		this.testShop = true;
 		GameObject.Destroy (shop);
+		sceneCamera.SetActive(true);
+		setInventoryViewOnly (false);
 	}
 
+
+	public void setInventoryViewOnly(bool viewOnly){
+		inventory.GetComponent<InventoryManager> ().setViewOnly (viewOnly);
+	}
 
 }

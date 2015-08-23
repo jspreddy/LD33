@@ -19,5 +19,7 @@ public class InventoryManager : MonoBehaviour {
 		Debug.Log ("Bought Items.");
 	}
 
+	public void setViewOnly(bool viewOnly){
 
+	}
 }
