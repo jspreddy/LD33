@@ -1,20 +1,19 @@
 fileFormatVersion: 2
 guid: 73c092613352d4eb1bc7e1f51b6bb642
-timeCreated: 1440271410
+timeCreated: 1440275016
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: coin
-    21300002: coin_0
-    21300004: coin_1
-    21300006: coin_2
-    21300008: coin_3
-    21300010: coin_4
-    21300012: coin_5
-    21300014: coin_6
-    21300016: coin_7
-    21300018: coin_8
-    21300020: coin_9
+    21300000: coin_0
+    21300002: coin_1
+    21300004: coin_2
+    21300006: coin_3
+    21300008: coin_4
+    21300010: coin_5
+    21300012: coin_6
+    21300014: coin_7
+    21300016: coin_8
+    21300018: coin_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -63,100 +62,100 @@ TextureImporter:
     - name: coin_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 100
-        height: 100
+        x: 8
+        y: 5
+        width: 84
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 100
-        height: 100
+        x: 115
+        y: 4
+        width: 67
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_2
       rect:
         serializedVersion: 2
-        x: 200
-        y: 0
-        width: 100
-        height: 100
+        x: 226
+        y: 5
+        width: 47
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_3
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 100
-        height: 100
+        x: 336
+        y: 5
+        width: 28
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_4
       rect:
         serializedVersion: 2
-        x: 400
-        y: 0
-        width: 100
-        height: 100
+        x: 443
+        y: 5
+        width: 15
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_5
       rect:
         serializedVersion: 2
-        x: 500
-        y: 0
-        width: 100
-        height: 100
+        x: 537
+        y: 5
+        width: 27
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_6
       rect:
         serializedVersion: 2
-        x: 600
-        y: 0
-        width: 100
-        height: 100
+        x: 627
+        y: 5
+        width: 47
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_7
       rect:
         serializedVersion: 2
-        x: 700
-        y: 0
-        width: 100
-        height: 100
+        x: 717
+        y: 5
+        width: 67
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_8
       rect:
         serializedVersion: 2
-        x: 800
-        y: 0
-        width: 100
-        height: 100
+        x: 808
+        y: 5
+        width: 84
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: coin_9
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 100
-        height: 100
+        x: 904
+        y: 4
+        width: 91
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
