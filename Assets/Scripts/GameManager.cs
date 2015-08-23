@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
 
 
 	int kills = 0;
-	int gold = 5000;
+	int gold = 100;
 	public void addGold(int g){
 		this.gold += g;
 	}

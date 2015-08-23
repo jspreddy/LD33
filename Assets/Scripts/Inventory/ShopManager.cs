@@ -7,6 +7,12 @@ public class ShopManager : MonoBehaviour {
 
 	public Transform topBarTransform;
 	public Transform topBarGoldTextTransform;
+	public Transform topBarGoldCostTransform;
+
+	public Transform buyListContainer;
+
+	public GameObject buyRowPrefab;
+
 
 	private List<BuyItem> buyItems = new List<BuyItem>();
 
@@ -29,8 +35,9 @@ public class ShopManager : MonoBehaviour {
 
 	public void addBuyItem(Item.Type type){
 		for(int i =0; i< buyItems.Count; i++){
-			if(buyItems[i].type == type){
+			if(buyItems[i].getType () == type){
 				buyItems[i].incrementCount();
+				renderItemList ();
 				return;
 			}
 		}
@@ -56,7 +63,7 @@ public class ShopManager : MonoBehaviour {
 		int cost = this.getCheckoutCost ();
 		int currentGold = gameManager.getGold ();
 		Debug.Log ("Gold: "+ currentGold + ",    cost: "+cost);
-		if(cost < currentGold){
+		if(cost <= currentGold){
 			setGoldUiDisplay(gameManager.spendGold(cost));
 			inventoryManager.addItems(buyItems);
 			clearBuyItems();
@@ -70,10 +77,24 @@ public class ShopManager : MonoBehaviour {
 	}
 
 	private void renderItemList(){
-		// TODO: render the ui list.
+		foreach (Transform child in buyListContainer) {
+			GameObject.Destroy(child.gameObject);
+		}
+
+		foreach(BuyItem buyItem in buyItems){
+			GameObject buyRow = Instantiate (buyRowPrefab);
+			buyRow.GetComponent<BuyRow> ().setData (Item.getName (buyItem.getType()), buyItem.getCount(), buyItem.getCost());
+			buyRow.transform.SetParent(buyListContainer, false);
+		}
+
+		setGoldCost (getCheckoutCost ());
 	}
 
 	private void setGoldUiDisplay(int gold){
 		topBarGoldTextTransform.GetComponent<Text> ().text = gold.ToString("C");
+	}
+
+	private void setGoldCost(int goldCost){
+		topBarGoldCostTransform.GetComponent<Text> ().text = "- " + goldCost.ToString ("C");
 	}
 }

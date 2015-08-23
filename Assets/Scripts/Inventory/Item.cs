@@ -11,6 +11,10 @@ public class Item {
 
 	private static string SPRITES_FOLDER = "Sprites/";
 
+	public static string knifeName =  "Knife";
+	public static string bagName =  "Bag";
+	public static string chocolateName =  "Chocolate";
+
 	public static Sprite knifeSprite =  null;
 	public static Sprite bagSprite =  null;
 	public static Sprite chocolateSprite =  null;
@@ -23,13 +27,20 @@ public class Item {
 	private static int bagHp 		= 10;
 	private static int chocolateHp 	= 1;
 
+	public static string getName(Type type){
+		switch(type){
+		case Type.knife: return knifeName;
+		case Type.bag: return bagName;
+		case Type.chocolate: return chocolateName;
+		default: return "";
+		}
+	}
 
 	public static int getValue(Type type){
 		switch(type){
 		case Type.knife: return knifeValue;
 		case Type.bag: return bagValue;
 		case Type.chocolate: return chocolateValue;
-
 		default: return 0;
 		}
 	}
@@ -39,7 +50,6 @@ public class Item {
 		case Type.knife: return knifeHp;
 		case Type.bag: return bagHp;
 		case Type.chocolate: return chocolateHp;
-
 		default: return 0;
 		}
 	}

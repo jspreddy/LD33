@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BuyItem {
 
-	public Item.Type type;
-	public int count;
+	private Item.Type type;
+	private int count;
 
 	public BuyItem(Item.Type type, int count){
 		this.type = type;
@@ -16,9 +16,16 @@ public class BuyItem {
 		}
 	}
 
+	public Item.Type getType(){
+		return this.type;
+	}
+	public int getCount(){
+		return this.count;
+	}
 	public int getCost(){
 		return count * Item.getValue (type);
 	}
+
 
 	public void incrementCount(){
 		this.count++;
