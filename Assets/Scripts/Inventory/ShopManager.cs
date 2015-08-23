@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour {
 	
 	}
 
-	public void addBuyItem(Item.Type type){
+	public void addBuyItem(Item.ItemType type){
 		for(int i =0; i< buyItems.Count; i++){
 			if(buyItems[i].getType () == type){
 				buyItems[i].incrementCount();

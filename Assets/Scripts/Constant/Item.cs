@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Item {
 
-	public enum Type {
+	public enum ItemType {
 		knife,
 		bag,
 		chocolate,
@@ -27,38 +27,38 @@ public class Item {
 	private static int bagHp 		= 10;
 	private static int chocolateHp 	= 1;
 
-	public static string getName(Type type){
+	public static string getName(ItemType type){
 		switch(type){
-		case Type.knife: return knifeName;
-		case Type.bag: return bagName;
-		case Type.chocolate: return chocolateName;
+		case ItemType.knife: return knifeName;
+		case ItemType.bag: return bagName;
+		case ItemType.chocolate: return chocolateName;
 		default: return "";
 		}
 	}
 
-	public static int getValue(Type type){
+	public static int getValue(ItemType type){
 		switch(type){
-		case Type.knife: return knifeValue;
-		case Type.bag: return bagValue;
-		case Type.chocolate: return chocolateValue;
+		case ItemType.knife: return knifeValue;
+		case ItemType.bag: return bagValue;
+		case ItemType.chocolate: return chocolateValue;
 		default: return 0;
 		}
 	}
 
-	public static int getHp(Type type){
+	public static int getHp(ItemType type){
 		switch(type){
-		case Type.knife: return knifeHp;
-		case Type.bag: return bagHp;
-		case Type.chocolate: return chocolateHp;
+		case ItemType.knife: return knifeHp;
+		case ItemType.bag: return bagHp;
+		case ItemType.chocolate: return chocolateHp;
 		default: return 0;
 		}
 	}
 
-	public static Sprite getSprite(Type type){
+	public static Sprite getSprite(ItemType type){
 		switch(type){
-		case Type.bag: return getSprite ("bag");
-		case Type.chocolate: return getSprite ("chocolate");
-		case Type.knife:
+		case ItemType.bag: return getSprite ("bag");
+		case ItemType.chocolate: return getSprite ("chocolate");
+		case ItemType.knife:
 		default: return getSprite("knife");
 		}
 	}

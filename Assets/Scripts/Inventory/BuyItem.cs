@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BuyItem {
 
-	private Item.Type type;
+	private Item.ItemType type;
 	private int count;
 
-	public BuyItem(Item.Type type, int count){
+	public BuyItem(Item.ItemType type, int count){
 		this.type = type;
 		if (count > 0){
 			this.count = count;
@@ -16,7 +16,7 @@ public class BuyItem {
 		}
 	}
 
-	public Item.Type getType(){
+	public Item.ItemType getType(){
 		return this.type;
 	}
 	public int getCount(){

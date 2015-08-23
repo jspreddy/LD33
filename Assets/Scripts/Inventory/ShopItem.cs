@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour {
 
-	public Item.Type type;
+	public Item.ItemType type;
 
 	private ShopManager shopManager;
 
