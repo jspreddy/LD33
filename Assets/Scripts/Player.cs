@@ -18,6 +18,10 @@ public class Player : MonoBehaviour {
 		follow_mouse();
 	}
 
+	void OnCollisionEnter2D(Collision2D col) {
+		// Do stuff
+	}
+
 	public void follow_mouse() {
 		mousePosition=Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bag : PickupObject {
 	void Start () {
-		
+
 	}
 
 	void Update () {
@@ -20,14 +20,25 @@ public class Bag : PickupObject {
 	}
 
 	void OnMouseDown() {
+		// Pickup bag
 		in_hand = true;
 	}
 
 	void OnMouseUp() {
+		// Drop bag
 		in_hand = false;
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		in_hand = false;
+		if (col.gameObject.tag == "Coin") {
+			// Update play stats
+			Stats.coins_collected++;
+
+			// Remove coin from screen
+			Destroy(col.gameObject);
+		} else {
+			// Drop bag
+			in_hand = false;
+		}
 	}
 }

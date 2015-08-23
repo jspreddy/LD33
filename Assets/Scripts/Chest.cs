@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Chest : Object {
 	private bool chest_opened;
+	private float speed = 6f;
+
 	public Rigidbody2D coin;
 
 	void Start () {
@@ -22,31 +24,13 @@ public class Chest : Object {
 	}
 
 	void generate_coins(int num_coins) {
-		float lastX = 0f;
-		float lastY = 0f;
-
-		int maxY = -2;
-		int minY = -8;
-		int minX = -1;
-		int maxX = 14;
-
 		for (int i = 0; i < num_coins; i++) {
-			Vector3 position = transform.position;
+			Rigidbody2D coin_clone = (Rigidbody2D) Instantiate(coin, this.transform.position, transform.rotation);
+			coin_clone.AddForce (transform.right * -speed, ForceMode2D.Impulse);
+			coin_clone.AddForce (transform.up * (speed * 1.7f), ForceMode2D.Impulse);
 
-			position.x = position.x - generate_random_int(minX, maxX);
-			if (position.x == lastX || position.x == 0) {
-				position.x = position.x - generate_random_int(minX, maxX);
-			}
-
-			position.y = position.y - generate_random_int(minY, maxY);
-			if (position.y == lastY || position.y == 0) {
-				position.y = position.y - generate_random_int(-minY, maxY);
-			}
-
-			lastX = position.x;
-			lastY = position.y;
-
-			Rigidbody2D coin_clone = (Rigidbody2D) Instantiate(coin, position, transform.rotation);
+			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
 		}
 	}
 
