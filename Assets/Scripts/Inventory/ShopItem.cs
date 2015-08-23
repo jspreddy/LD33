@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour {
 
-	public Item.ItemType type;
+	public GameConstants.ItemType type;
 
 	private ShopManager shopManager;
 
 	// Use this for initialization
 	void Start () {
 		Image img = this.transform.GetChild(0).GetComponent<Image> ();
-		img.sprite = Item.getSprite (type);
+		img.sprite = GameConstants.getSprite (type);
 
 		shopManager = GameObject.FindGameObjectWithTag ("Shop").GetComponent<ShopManager> ();
 	}
@@ -23,7 +23,7 @@ public class ShopItem : MonoBehaviour {
 
 
 	public void onInventoryItemClick(){
-		shopManager.addBuyItem (type);
+		shopManager.addItemToCart (type);
 	}
 
 }

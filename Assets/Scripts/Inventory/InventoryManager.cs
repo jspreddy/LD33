@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour {
 	
 	}
 
-	public void addItems(List<BuyItem> buyItems){
+	public void addItems(List<Item> boughtItems){
 		//TODO: fill it up.
 		Debug.Log ("Bought Items.");
 	}

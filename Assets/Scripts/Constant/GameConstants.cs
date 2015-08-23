@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item {
+public class GameConstants {
 
 	public enum ItemType {
 		knife,

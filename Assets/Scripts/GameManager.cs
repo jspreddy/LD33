@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 
-	public GameObject sceneCamera;
+	public GameObject gameScene;
 	public GameObject inventory;
 	public bool testShop = false;
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 		if(timeTillShopShow > 4.0f){
 			testShop = false;
 			shop = Instantiate(Resources.Load ("Prefabs/Shop/Shop", typeof(GameObject))) as GameObject;
-			sceneCamera.SetActive(false);
+			gameScene.SetActive(false);
 			setInventoryViewOnly(true);
 		}
 	}
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
 		this.timeTillShopShow = 0.0f;
 		this.testShop = true;
 		GameObject.Destroy (shop);
-		sceneCamera.SetActive(true);
+		gameScene.SetActive(true);
 		setInventoryViewOnly (false);
 	}
 

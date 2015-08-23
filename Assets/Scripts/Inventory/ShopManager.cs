@@ -14,7 +14,7 @@ public class ShopManager : MonoBehaviour {
 	public GameObject buyRowPrefab;
 
 
-	private List<BuyItem> buyItems = new List<BuyItem>();
+	private List<Item> cartItems = new List<Item>();
 
 	private GameManager gameManager;
 	private InventoryManager inventoryManager;
@@ -33,21 +33,21 @@ public class ShopManager : MonoBehaviour {
 	
 	}
 
-	public void addBuyItem(Item.ItemType type){
-		for(int i =0; i< buyItems.Count; i++){
-			if(buyItems[i].getType () == type){
-				buyItems[i].incrementCount();
-				renderItemList ();
+	public void addItemToCart(GameConstants.ItemType type){
+		for(int i =0; i< cartItems.Count; i++){
+			if(cartItems[i].getType () == type){
+				cartItems[i].incrementCount();
+				renderCartItemList ();
 				return;
 			}
 		}
-		buyItems.Add (new BuyItem (type, 1));
-		renderItemList ();
+		cartItems.Add (new Item (type, 1));
+		renderCartItemList ();
 	}
 
-	public void clearBuyItems(){
-		buyItems.Clear ();
-		renderItemList ();
+	public void clearCartItems(){
+		cartItems.Clear ();
+		renderCartItemList ();
 		Debug.Log("Clear Buy List.");
 	}
 
@@ -57,9 +57,9 @@ public class ShopManager : MonoBehaviour {
 		Debug.Log ("Gold: "+ currentGold + ",    cost: "+cost);
 		if(cost <= currentGold){
 			setGoldUiDisplay(gameManager.spendGold(cost));
-			inventoryManager.addItems(buyItems);
-			clearBuyItems();
-			renderItemList ();
+			inventoryManager.addItems(cartItems);
+			clearCartItems();
+			renderCartItemList ();
 		}
 		else{
 			// TODO: create alert message system.
@@ -73,31 +73,31 @@ public class ShopManager : MonoBehaviour {
 
 	private int getCheckoutCost(){
 		int cost = 0;
-		for(int i = 0; i < buyItems.Count; i++){
-			cost += buyItems[i].getCost();
+		for(int i = 0; i < cartItems.Count; i++){
+			cost += cartItems[i].getCost();
 		}
 		return cost;
 	}
 
-	private void renderItemList(){
+	private void renderCartItemList(){
 		foreach (Transform child in buyListContainer) {
 			GameObject.Destroy(child.gameObject);
 		}
 
-		foreach(BuyItem buyItem in buyItems){
+		foreach(Item buyItem in cartItems){
 			GameObject buyRow = Instantiate (buyRowPrefab);
-			buyRow.GetComponent<BuyRow> ().setData (Item.getName (buyItem.getType()), buyItem.getCount(), buyItem.getCost());
+			buyRow.GetComponent<ShopCartRow> ().setData (GameConstants.getName (buyItem.getType()), buyItem.getCount(), buyItem.getCost());
 			buyRow.transform.SetParent(buyListContainer, false);
 		}
 
-		setGoldCost (getCheckoutCost ());
+		setGoldCostDisplay (getCheckoutCost ());
 	}
 
 	private void setGoldUiDisplay(int gold){
 		topBarGoldTextTransform.GetComponent<Text> ().text = gold.ToString("C");
 	}
 
-	private void setGoldCost(int goldCost){
+	private void setGoldCostDisplay(int goldCost){
 		topBarGoldCostTransform.GetComponent<Text> ().text = "- " + goldCost.ToString ("C");
 	}
 }

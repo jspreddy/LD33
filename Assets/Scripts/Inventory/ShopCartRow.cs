@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class BuyRow : MonoBehaviour {
+public class ShopCartRow : MonoBehaviour {
 
 
 	public Transform nameObject;
