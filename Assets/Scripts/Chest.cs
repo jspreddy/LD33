@@ -29,7 +29,7 @@ public class Chest : Object {
 			coin_clone.AddForce (transform.right * -speed, ForceMode2D.Impulse);
 			coin_clone.AddForce (transform.up * (speed * 1.7f), ForceMode2D.Impulse);
 
-			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
 		}
 	}

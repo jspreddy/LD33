@@ -7,6 +7,9 @@ public class Bag : PickupObject {
 	}
 
 	void Update () {
+		// Stop collision between player and bag
+		Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+
 		if (in_hand) {
 			follow_mouse ();
 		} else {
@@ -35,7 +38,7 @@ public class Bag : PickupObject {
 			Stats.coins_collected++;
 
 			// Remove coin from screen
-			Destroy(col.gameObject);
+			Destroy (col.gameObject);
 		} else {
 			// Drop bag
 			in_hand = false;
