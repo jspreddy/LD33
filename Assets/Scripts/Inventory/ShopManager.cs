@@ -51,14 +51,6 @@ public class ShopManager : MonoBehaviour {
 		Debug.Log("Clear Buy List.");
 	}
 
-	private int getCheckoutCost(){
-		int cost = 0;
-		for(int i = 0; i < buyItems.Count; i++){
-			cost += buyItems[i].getCost();
-		}
-		return cost;
-	}
-
 	public void buy(){
 		int cost = this.getCheckoutCost ();
 		int currentGold = gameManager.getGold ();
@@ -74,6 +66,17 @@ public class ShopManager : MonoBehaviour {
 			this.topBarTransform.GetComponent<UiShaker>().shake();
 			Debug.Log ("Not Enough Gold.");
 		}
+	}
+	public void continueToNextScene(){
+		gameManager.refreshShopTimer ();
+	}
+
+	private int getCheckoutCost(){
+		int cost = 0;
+		for(int i = 0; i < buyItems.Count; i++){
+			cost += buyItems[i].getCost();
+		}
+		return cost;
 	}
 
 	private void renderItemList(){
