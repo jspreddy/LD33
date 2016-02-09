@@ -30,8 +30,8 @@ public class Chest : Object {
 	void generate_coins(int num_coins) {
 		for (int i = 0; i < num_coins; i++) {
 			Rigidbody2D coin_clone = (Rigidbody2D) Instantiate(coin, this.transform.position, transform.rotation);
-			coin_clone.AddForce (transform.right * -speed, ForceMode2D.Impulse);
-			coin_clone.AddForce (transform.up * (speed * 1.7f), ForceMode2D.Impulse);
+			coin_clone.AddForce (transform.right * (-speed * 2), ForceMode2D.Impulse);
+			coin_clone.AddForce (transform.up * (speed * 4.7f), ForceMode2D.Impulse);
 
 			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 			Physics2D.IgnoreCollision(coin_clone.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 
 	void Update () {
 		// Check end of game
+		// TODO: Move to game controller, in fact.. move a lot of things
+		// TODO: Move everything
 		if (Stats.coins_left == 0) {
 			Application.LoadLevel(0);
 		}
